@@ -666,9 +666,13 @@ ____
 ```
 /src
   /Pizzas
-    /Calzone
-      speciale.php
+    /Calzone(pārlocītās)
+      calzoneSpeciale.php
+      calzoneSpicy.php
     Margarita.php
+    Funggi.php
+    Bergamo.php
+    Venezia.php
 
 ```
 
@@ -696,7 +700,7 @@ namespace Pizzas\Calzone;
 
 use Pizzas\Margarita;
 
-class Speciale {	
+class calzoneSpeciale {	
   public $size;
   public $topping = ['cheese', 'mashrooms', 'shrimps']
 	public function __construct($size) {
