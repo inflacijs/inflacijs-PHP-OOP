@@ -19,7 +19,7 @@ ___
 * Lēnākas programmas. OOP parasti ir lēnākas par programmām, kuras ir bāzētas uz procedūrprogramēšanas.
 * Lielāks programmas izmērs nekā procedūrprogramēšanā.
 * Grūtāk apgūstama. OOP princips dažiem cilvēkiem var izrādīties grūtāk apgūstams un var aizņemt vairāk laika.
-* Nav pielietojama visiem risinājumiem. Citos risinājumos labāk tomēr izvēlēties funkcion;alo, loģisko vai procedūr programēšanu, lai sasniegtu labākus rezultātus.
+* Nav pielietojama visiem risinājumiem. Citos risinājumos labāk tomēr izvēlēties funkcionālo, loģisko vai procedūr programēšanu, lai sasniegtu labākus rezultātus.
 
 ____
 
@@ -40,14 +40,14 @@ ____
 
 ____
 
-## Klases(Class) un objekti(object)
+## Klases(Class), objekti(object), properties(īpašības), methods(metodes).
 
 ### Tehniski objektorientēto programmēšanu raksturo klases un objekti.
 
 ![class](https://tutorials.supunkavinda.blog/static/images/php-oop-class-blueprint.png)
 
 
-### Tātad klase ir ir kā mājas rasējums. No viena rasējuma var uzcelt viarākas mājas. Tāpat arī no vienas klases var uztaisīt vairākus objektus.
+### Tātad klase ir ir kā mājas rasējums. No viena rasējuma var uzcelt vairākas mājas. Tāpat arī no vienas klases var uztaisīt vairākus objektus.
 
 
 
@@ -57,7 +57,7 @@ ____
 
 ## Kas ir Properties? 
 
-## Properties ir objekta mainīgie. tie glabā vērtības, kas tiek saistītas ar objektu. 
+## Properties ir objekta mainīgie. Tie glabā vērtības, kas tiek saistītas ar objektu. 
 
 ![class](https://tutorials.supunkavinda.blog/static/images/php-oop-properties.png)
 
@@ -78,7 +78,7 @@ ___
 
 ## OOP piemēri
 
-#### Pieņemsim, ka mums ir klase ar nosaukumu **Fruit**. Fruit klasei ir īpašības: name, color, height. Mēs varam definēt mainīgos $name $color, $height un tie tad arī glabās šīs īpašības.
+### Pieņemsim, ka mums ir klase ar nosaukumu **Fruit**. Fruit klasei ir īpašības: name, color, height. Mēs varam definēt mainīgos $name $color, $height un tie tad arī glabās šīs īpašības.
 
 ### Kad individuāli objekti (ābols, banāns, apelsīns) ir izveidoti, tie manto visas īpašības(properties) un metodes no klases. Bet katram objektam būs savas īpašību vērtības(value).
 
@@ -194,7 +194,7 @@ class Fruit {
   private $color;
   protected $weight;
 
-  function set_name($n) {  // a public function (default)
+  public function set_name($n) {  // a public function (default)
     $this->name = $n;
   }
   protected function set_color($n) { // a protected function
@@ -222,7 +222,7 @@ ___________________
 
 ![interfaces](https://tutorials.supunkavinda.blog/static/images/php-oop-inheritance-2.png)
 
-### Mantojamība ir tad, kad viena klase tiek atvasināta no citas klases. Tā pārņem īpašības un metodes nu citas vai pat dažreiz no vairākām klasēm. Atvasinātā klase manto visas **public** un **protected** metodes un īpašības. Klases mantojamība tiek definēta ar vārdu **extends**.
+### Mantojamība ir tad, kad viena klase tiek atvasināta no citas klases. Tā pārņem īpašības un metodes no citas vai pat dažreiz no vairākām klasēm. Atvasinātā klase manto visas **public** un **protected** metodes un īpašības. Klases mantojamība tiek definēta ar vārdu **extends**.
 
 ```PHP
 <?php
@@ -252,6 +252,8 @@ $strawberry->intro(); // ERROR. intro() is protected
 ```
 
 ### Mantotās metodes un īpašibas var tikt pārrakstītas. To var izdarīt atvasinātajā klasē vienkārši definējot metodes vai īpašības ar tādu pašu nosaukumu.
+
+## Final
 
 ### Atslēgas vārds **final** tiek izmantots, lai aizsargātu klases īpašības un metodes no mantošanas vai pārrakstīšanas.
 
@@ -319,7 +321,7 @@ abstract class ParentClass {
 ?>
 ```
 ### Tātad, lai bērna klase mantotu no abstraktas klases ir jāpieturās pie šādiem notiekumiem:
-* Bērna klases metodei jābūt definētai ar tādu pašu nosaukumu un tad tā pārdeklarē vecāku abstraktās klases metodi.
+* Bērna klases metodei jābūt definētai ar tādu pašu nosaukumu kā vecāku abstraktajā klasē un tad tā pārdeklarē vecāku abstraktās klases metodi.
 * Bērna klases metodei jābūt definētai ar tādu pašu vai arī mazāk ierobežotu pieejas modifikatoru. piem. Ja abstraktajai klasei ir **protected** pieejas modifikators, tad bērna klasei jābūt **protected** vai **public**, bet ne **private**.
 * Nepieieciešamo argumentu skaitam ir jābūt tādam pašam, tomēr bērna klasei var būt arī kādi neobligātie(optional) argumenti.
 
@@ -443,7 +445,7 @@ ___
 
 ## Traits 
 
-### PHP atbalsta tikai 1 mantojamību. B;erna klase var mantot tikai no 1 vecāka, nevis no vairākiem. Kas notiek, ja bērna klasei vajaga mantot metodes no vairākām klasēm ? 
+### PHP atbalsta tikai 1 mantojamību. Bērna klase var mantot metodes un īpašības tikai no 1 vecāka, nevis no vairākiem. Kas notiek, ja bērna klasei vajaga mantot metodes no vairākām klasēm ? 
 ### OOP traits šo problēmu atrisina.
 ### Traits var saturēt metodes un abstraktas metodes, kuras var tikt izmantotas no vairākām klasēm. Metodēm arī var tikt piešķirts jebkurš piekļuves modifikātors(public, private vai protected).
 ### Traits tiek deklarēts ar vārdu **trait**
@@ -553,7 +555,7 @@ greeting::welcome();
 
 ## Vairāk par **static methods**.
 
-### Klasei var būt gan statiskās metodes, gan parastās. Statiskā metodei var būt pieeja no parastās metodas tajā pašā klasē. izmantojot vārdu **self** un dubultkolu.
+### Klasei var būt gan statiskās metodes, gan parastās. Statiskā metodei var būt pieeja no parastās metodas tajā pašā klasē. Izmantojot vārdu **self** un dubultkolu.
 
 ```PHP
 <?php
@@ -645,9 +647,10 @@ echo pi::$value;
 ### Augstāk mēs redzam, ka ir deklarēta statiskā īpašība *value* . Pēctam mēs izsaucam statisko īpašību.
 
 
+____
 ## Namespaces
 
-### Vienkāršais izskaidrojums - Divus cilvēkus sauc par **Roberts** (tā mēdz gadīites). Mēs viņus varam atšķirt pateicoties uzvārdiem. Tāpat arī divām klasēm var gadīites vienādi nosaukumi. tieši tādēļ mums palīgā nāk **namesapaces**. Klases mēs varam atšķirt pateicoties **namespaces**.
+### Vienkāršais izskaidrojums - Divus cilvēkus sauc par **Roberts** (tā mēdz gadīites). Mēs viņus varam atšķirt pateicoties uzvārdiem. Tāpat arī divām klasēm var gadīites vienādi nosaukumi. Tieši tādēļ mums palīgā nāk **namesapaces**. Klases mēs varam atšķirt pateicoties **namespaces**.
 
 ### Ko **namespaces** dara ? 
 
