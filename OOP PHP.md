@@ -356,15 +356,15 @@ class Citroen extends Car {
 }
 
 // Objektu veidošanu no bērnu klasēm
-$audi = new audi("Audi");
+$audi = new Audi("Audi");
 echo $audi->intro();
 echo "<br>";
 
-$volvo = new volvo("Volvo");
+$volvo = new Volvo("Volvo");
 echo $volvo->intro();
 echo "<br>";
 
-$citroen = new citroen("Citroen");
+$citroen = new Citroen("Citroen");
 echo $citroen->intro();
 ?>
 ```
@@ -470,14 +470,14 @@ class MyClass {
 
 ```PHP
 <?php
-trait message1 {
+trait Message1 {
 public function msg1() {
     echo "OOP is fun! ";
   }
 }
 
 class Welcome {
-  use message1;
+  use Message1;
 }
 
 $obj = new Welcome();
@@ -490,13 +490,13 @@ $obj->msg1();
 
 ```PHP
 <?php
-trait message1 {
+trait Message1 {
   public function msg1() {
     echo "OOP ir kruta! ";
   }
 }
 
-trait message2 {
+trait Message2 {
   public function msg2() {
     echo "OOP novērš koda atkārtošanos!";
   }
@@ -540,7 +540,7 @@ ClassName::staticMethod();
 
 ```PHP
 <?php
-class greeting {
+class Greeting {
   public static function welcome() {
     echo "Hello World!";
   }
@@ -559,7 +559,7 @@ greeting::welcome();
 
 ```PHP
 <?php
-class greeting {
+class Greeting {
   public static function welcome() {
     echo "Hello World!";
   }
@@ -569,7 +569,7 @@ class greeting {
   }
 }
 
-new greeting(); // Hello World!
+new Greeting(); // Hello World!
 ?>
 ```
 
@@ -577,7 +577,7 @@ new greeting(); // Hello World!
 
 ```PHP
 <?php
-class greeting {
+class Greeting {
   public static function welcome() {
     echo "Hello World!";
   }
@@ -596,21 +596,21 @@ class SomeOtherClass {
 ```PHP
 
 <?php
-class domain {
+class Domain {
   protected static function getWebsiteName() {
     return "otrapuse.lv";
   }
 }
 
-class domainW3 extends domain {
+class DomainW3 extends Domain {
   public $websiteName;
   public function __construct() {
     $this->websiteName = parent::getWebsiteName();
   }
 }
 
-$domainW3 = new domainW3;
-echo $domainW3 -> websiteName;
+$domainW3 = new DomainW3;
+echo $domainW3->websiteName;
 ?>
 ```
 _____
@@ -635,12 +635,12 @@ ClassName::staticProp;
 ### Apskatīsim kādu piemēru.
 ```PHP
 <?php
-class pi {
+class Pi {
   public static $value = 3.14159;
 }
 
 // Get static property
-echo pi::$value;
+echo Pi::$value;
 ?>
 ```
 
@@ -704,7 +704,7 @@ class calzoneSpeciale {
   public $size;
   public $topping = ['cheese', 'mashrooms', 'shrimps']
 	public function __construct($size) {
-		$this -> size = $size;
+		$this->size = $size;
 	}
 	public function getSize() {
 		return $this->size;
